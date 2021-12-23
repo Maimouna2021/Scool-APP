@@ -23,11 +23,17 @@ ajouter.addEventListener("click", (event)=>{
         niveau : recupNiveau,
         biographie : recupBiographie,
     }
-    console.log(nom)
 
 
     //RAPPELER LA CARTE
     carte(elements);
+
+    //VIDER LES INFOS SAISIES DANS LE FORMULAIRE
+    nom.value = ""
+    prenom.value = ""
+    niveau.value = ""
+    biographie.value = ""
+  
 
 })
     //L'AFFICHAGE DES VALEURS DES ELEMENTS DU FORMULAIRE

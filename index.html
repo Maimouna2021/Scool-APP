@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
          <title>Scool APP</title>
-         <script src="script.js" defer></script>
+         <script src="app.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -22,14 +22,16 @@
             <div class="m-5">
             <select class="form-select" id="id_niveau" aria-label="Default select example">
                 <option selected>Niveau</option>
-                <option value="1">fort</option>
-                <option value="2">Moyen</option>
-                <option value="3">Debutant</option>
+                <option value="Excellent">Excellent</option>
+                <option value="Bien">Bien</option>
+                <option value="Assez-bien">Assez-bien</option>
+                <option value="Passable">Passable</option>
+
               </select>
             </div>
               <div class="m-5">
                 <textarea class="form-control" id="id_biographie" rows="5"></textarea><br>
-                <button class="btn_ajouter"  id="btn_ajouter">Ajouter</button>
+                <button class="btn_ajouter bg-red"  id="btn_ajouter">Ajouter</button>
               </div>
             </form>
         </div>
