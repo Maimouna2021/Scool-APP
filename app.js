@@ -1,7 +1,8 @@
 const API_KEY =
-   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTY0NzA1MSwiZXhwIjoxOTU1MjIzMDUxfQ.pgqswSXOvAmmn3T_hcMtI6lNpGNTwf9AynqQmKWXXQg"
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTY0NzA1MSwiZXhwIjoxOTU1MjIzMDUxfQ.pgqswSXOvAmmn3T_hcMtI6lNpGNTwf9AynqQmKWXXQg"
 
 const API_URL = "https://wamnvqxjmbqdpfqoyypu.supabase.co/rest/v1/infos"
+
 //RECUPERATION DES ELEMENTS DU FORMULAIRE
 const nom = document.getElementById("id_nom");
 const prenom = document.getElementById("id_prenom");
@@ -13,6 +14,7 @@ const btnSauvegarder = document.getElementById("idBtnSauvegarder");
 let tableauElements =  []
 const principal = document.getElementById("princ")
 
+//OCTROYAGE DE NOMBRE MAXIMAL DE SAISIE
 let max = 50
 biographie.maxLength=max
 
@@ -25,7 +27,7 @@ if (caratere == max) {
   biographie.style.color="black"
 
 }
-
+  //Remplacement du text saisie par le nombre de caractere
   document.getElementById("nbre").innerHTML=caratere
 
 })
@@ -34,47 +36,55 @@ if (caratere == max) {
 propositionElement = document.getElementById("idCartes")
 
     //L'AFFICHAGE DES VALEURS DES ELEMENTS DU FORMULAIRE
-   
-
-const carte = (infos, position)=>{
-  const idBouttonModifier = "btnModifier" + Math.random()
-  const idBouttonSupprimer = "btnSupprimer" + Math.random()
-  const idCard = "btnCard" + infos.id 
-    position.insertAdjacentHTML(
-        "afterbegin",
-        `
-        <div class="col-sm-5" id=${idCard}>
-        <div class="card">
-          <div class="card-body">
-          <img src="images/maimouna.png" class="imageapp" alt="">
-            <h5 class="card-title"Special title treatment>${infos.nom}  ${infos.prenom}</h5>
-            <p class="card-text">${infos.biographie}</p>
-            <span>${infos.niveau}</span>
-            <a href="#" class="card-link" id = ${idBouttonModifier}>Modifier</a>
-            <a href="#" class="card-link" id = ${idBouttonSupprimer}>Supprimer</a>
+    const carte = (datas, propositionElement)=>{
+    const idBouttonModifier = "btnModifier" + Math.random()
+    const idBouttonSupprimer = "btnSupprimer" + Math.random()
+    const idBouttonDetails = "btnDetails" + Math.random()
+    const idCard = "btnCard" + datas.id 
+      propositionElement.insertAdjacentHTML(
+          "afterbegin",
+          `
+          <div class="col col-sm-6 p-2" id=${idCard}>
+          <div class="card">
+            <div class="card-body">
+            <img src="images/maimouna.png" class="imageapp" alt="">
+              <h5 class="card-title"Special title treatment>${datas.nom}  ${datas.prenom}</h5>
+              <p class="card-text">${datas.biographie}</p>
+              <span>${datas.niveau}</span>
+              <a href="#" class="card-link" id = ${idBouttonModifier}>Modifier</a>
+              <a href="#" class="card-link" id = ${idBouttonSupprimer}>Supprimer</a>
+              <a href="#" class="card-link" id = ${idBouttonDetails}>Detali</a>
+            </div>
           </div>
         </div>
-      </div>
-      `
-      )
+        `
+        )
+        document.getElementById(idBouttonDetails).addEventListener("click", ()=>{
+        
 
-    //RECUPERATION DES BOUTTONS MODIFIER ET SUPPRIMER
-    const btnModifier  = document.getElementById(idBouttonModifier)
-    const btnSupprimer  = document.getElementById(idBouttonSupprimer)
-    const btnCard = document.getElementById(idCard)
+          localStorage.setItem("Apprenant", JSON.stringify(datas))
+          location.href = 'Detail.html'
+          
+        })
+
+      //RECUPERATION DES BOUTTONS MODIFIER ET SUPPRIMER
+      const btnModifier  = document.getElementById(idBouttonModifier)
+      const btnSupprimer  = document.getElementById(idBouttonSupprimer)
+      const btnCard = document.getElementById(idCard)
 
 
 
-    btnModifier.addEventListener("click", (event)=>{
-      event.preventDefault()
-    })
-    btnSupprimer.addEventListener("click", (event)=>{
-      event.preventDefault()
-      btnCard.parentNode.replaceChildren(btnCard)
-      btnCard.parentNode.removeChild(btnCard)
-      return false;
-    })
-  }
+      btnModifier.addEventListener("click", (event)=>{
+        event.preventDefault()
+      })
+      btnSupprimer.addEventListener("click", (event)=>{
+        event.preventDefault()
+        btnCard.parentNode.replaceChildren(btnCard)
+        btnCard.parentNode.removeChild(btnCard)
+        return false;
+      })
+      
+    }
 
   ajouter.addEventListener("click", (event)=>{
     event.preventDefault()
@@ -84,7 +94,7 @@ const carte = (infos, position)=>{
     const recupNiveau = niveau.options[niveau.selectedIndex].value
     const recupBiographie = biographie.value; 
 
-
+    //VERIFICALTION DES CHAMPS S'ILS SONT VIDES APLLIQUE LA COULEUR COUGE
     if(recupNom == ""){
       nom.style.border= "1px solid red"
       nom.focus()
@@ -125,13 +135,13 @@ const carte = (infos, position)=>{
      document.getElementById("form").reset()
 
    })
-
+   
+      //ECOUTER L'EVENEMENT DU BOUTTON SAUVEGARDER
   btnSauvegarder.addEventListener("click", (event)=>{
     event.preventDefault()
-     
-    principal.innerHTML = ""
 
-    console.log("aaaaa")
+     //
+    principal.innerHTML = ""
 
    //ENVOYER LES DONNEES VERS SUPABASE
    tableauElements.forEach((parcourt)=>{
@@ -147,7 +157,6 @@ const carte = (infos, position)=>{
       .then((response) => response.json())
       .then((data) => {
         ideeCreeAuNiveauAPI = data[0]
-        //AJOUT DE LA NOUVELLE IDEE AU NIVEAU DE LA PAGE
         carte(ideeCreeAuNiveauAPI, principal)
       })
    })
