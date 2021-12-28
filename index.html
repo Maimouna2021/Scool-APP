@@ -9,37 +9,44 @@
          <script src="app.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
+<body id="princ">
     <div class="row">
-        <div class="col-6 p-5 patie_gauche">
-          <form >
+        <div class="col-6 p-5">
+          <form id="form">
             <div class="m-5">
-                <input type="text" class="form-control input_gauche" id="id_nom" placeholder="nom">
+              <label for="nom">Votre nom</label>
+                <input type="text" class="form-control" id="id_nom" placeholder="nom *">
+                <span style="color: red; display: none;" id="require_nom">Veillez remplir ce champ svp !</span>
               </div>
               <div class="m-5">
-              <input type="text" class="form-control" id="id_prenom" placeholder="prenom">
+                <label for="nom">Votre prenom</label>
+              <input type="text" class="form-control" id="id_prenom" placeholder="prenom *">
+              <span style="color: red; display: none;" id="require_prenom">Veillez remplir ce champ svp !</span>
             </div>
             <div class="m-5">
+              <label for="nom">Votre niveau</label>
             <select class="form-select" id="id_niveau" aria-label="Default select example">
-                <option selected>Niveau</option>
-                <option value="Excellent">Excellent</option>
-                <option value="Bien">Bien</option>
-                <option value="Assez-bien">Assez-bien</option>
-                <option value="Passable">Passable</option>
-
-              </select>
+              <option value=""></option>
+              <option value="Excellent">Excellent</option>
+              <option value="Bien">Bien</option>
+              <option value="Assez-bien">Assez-bien</option>
+              <option value="Passable">Passable</option>
+            </select>
+            <span style="color: red; display: none;" id="require_niveau">Veillez remplir ce champ svp !</span>
             </div>
               <div class="m-5">
-                <textarea class="form-control" id="id_biographie" rows="5"></textarea><br>
-                <button class="btn_ajouter bg-red"  id="btn_ajouter">Ajouter</button>
+                <label for="nom">Votre biographie</label>
+                <textarea class="form-control" id="id_biographie" rows="5"></textarea><br> 
+                <span style="color: red; display: none;" id="require_biographie">Veillez remplir ce champ svp !</span> 
+                <p id="text-restant" class="text-end">Nombre de caracteres : <strong id="nbre">0</strong>  /130 </p>
               </div>
+                <button class="btn_ajouter btn btn-danger"  id="btn_ajouter">Ajouter</button>
             </form>
-        </div>
+        </div> 
         <div class="col-6" id="idCartes">
-       
+          <button type="button" class="btn btn-success" id="idBtnSauvegarder">Sauvegarder</button>
         </div>
     </div>
-    
+  
 </body>
 </html>
-

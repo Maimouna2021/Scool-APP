@@ -1,10 +1,14 @@
-.patie_gauche{
-    background-color: skyblue;
-  
-}
+
 .input_gauche{
     height: 50px;
     width: 50px;
 }
-
+#idBtnSauvegarder{
+    margin-top: 5%;
+}
+.imageapp{
+    height: 100px;
+    width: 100px;
+    
+}
 
