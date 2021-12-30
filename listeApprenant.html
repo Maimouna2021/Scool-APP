@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste Apprenants</title>
+    <script src="app.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="principal">
+
+    </div>
+    <script>
+
+
+        window.addEventListener("load", ()=>{
+         let principal = document.querySelector('.principal')
+         //RECUPERATION DES DONNEES VIA API
+        fetch(API_URL, {
+            headers: {
+            apikey: API_KEY,
+            },
+        })
+            .then((response) => response.json())
+            .then((infos) => {
+            infos.forEach((idee) => {
+                carte(idee, principal)
+            })
+            })
+            //L'AFFICHAGE DES VALEURS DES ELEMENTS DU FORMULAIRE
+            const carte = (datas, propositionElement)=>{
+            const idBouttonModifier = "btnModifier" + Math.random()
+            const idBouttonSupprimer = "btnSupprimer" + Math.random()
+            const idBouttonDetails = "btnDetails" + Math.random()
+            const idCard = "btnCard" + datas.id 
+            propositionElement.insertAdjacentHTML(
+          "afterbegin",
+          `
+          <div class="col col-sm-6 p-2" id=${idCard}>
+          <div class="card">
+            <div class="card-body">
+            <img src="http://placehold.it/100x100" class="imageapp" alt="">
+              <h5 class="card-title"Special title treatment>${datas.nom}  ${datas.prenom}</h5>
+              <p class="card-text">${datas.biographie}</p>
+              <span>${datas.niveau}</span>
+              <a href="#" class="card-link" id = ${idBouttonModifier}>Modifier</a>
+              <a href="#" class="card-link" id = ${idBouttonSupprimer}>Supprimer</a>
+              <a href="#" class="card-link" id = ${idBouttonDetails}>Detaili</a>
+            </div>
+          </div>
+        </div>
+        `
+        )
+        document.getElementById(idBouttonDetails).addEventListener("click", ()=>{
+        
+
+          localStorage.setItem("Apprenant", JSON.stringify(datas))
+          location.href = 'Detail.html'
+          
+        })
+
+      //RECUPERATION DES BOUTTONS MODIFIER ET SUPPRIMER
+      const btnModifier  = document.getElementById(idBouttonModifier)
+      const btnSupprimer  = document.getElementById(idBouttonSupprimer)
+      const btnCard = document.getElementById(idCard)
+
+      btnModifier.addEventListener("click", (event)=>{
+        event.preventDefault()
+        alert("bonjour")
+        nom.value = elements.nom
+    prenom.value = elements.prenom
+    niveau.value = elements.niveau;
+    biographie.value = elements.biographie
+    btnCard.replaceChildren(btnCard)
+    btnCard.removeChild(btnCard).preventDefault()
+
+      })
+      btnSupprimer.addEventListener("click", (event)=>{
+        event.preventDefault()
+        btnCard.parentNode.replaceChildren(btnCard)
+        btnCard.parentNode.removeChild(btnCard)
+        return false;
+      })
+      
+    }
+        })
+    </script>
+</body>
+</html>
+

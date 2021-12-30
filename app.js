@@ -44,7 +44,7 @@ propositionElement = document.getElementById("idCartes")
       propositionElement.insertAdjacentHTML(
           "afterbegin",
           `
-          <div class="col col-sm-6 p-2" id=${idCard}>
+          <div class="col col-sm-6 p-2 text-dark" id=${idCard}>
           <div class="card">
             <div class="card-body">
             <img src="images/maimouna.png" class="imageapp" alt="">
@@ -76,11 +76,21 @@ propositionElement = document.getElementById("idCartes")
 
       btnModifier.addEventListener("click", (event)=>{
         event.preventDefault()
+
+        tableauElements.forEach(elements=>{
+          nom.value = elements.nom
+          prenom.value = elements.prenom
+          niveau.value = elements.niveau
+          biographie.value = elements.biographie
+          btnCard.replaceChildren(btnCard)
+          btnCard.removeChild(btnCard)
+        })
       })
       btnSupprimer.addEventListener("click", (event)=>{
         event.preventDefault()
-        btnCard.parentNode.replaceChildren(btnCard)
-        btnCard.parentNode.removeChild(btnCard)
+        btnCard.remove(btnCard)
+        btnCard.removeChild(btnCard)
+
         return false;
       })
       
@@ -122,6 +132,7 @@ propositionElement = document.getElementById("idCartes")
           niveau : recupNiveau,
           biographie : recupBiographie,
       }
+      console.log(elements)
 
   
         //RAPPELER LA CARTE
