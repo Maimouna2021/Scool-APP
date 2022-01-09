@@ -11,11 +11,10 @@
 <body>
 
     <div class="principal">
-
+      
     </div>
+
     <script>
-
-
         window.addEventListener("load", ()=>{
          let principal = document.querySelector('.principal')
          //RECUPERATION DES DONNEES VIA API
@@ -71,11 +70,11 @@
         event.preventDefault()
         alert("bonjour")
         nom.value = elements.nom
-    prenom.value = elements.prenom
-    niveau.value = elements.niveau;
-    biographie.value = elements.biographie
-    btnCard.replaceChildren(btnCard)
-    btnCard.removeChild(btnCard).preventDefault()
+        prenom.value = elements.prenom
+        niveau.value = elements.niveau;
+        biographie.value = elements.biographie
+        btnCard.replaceChildren(btnCard)
+        btnCard.removeChild(btnCard).preventDefault()
 
       })
       btnSupprimer.addEventListener("click", (event)=>{
