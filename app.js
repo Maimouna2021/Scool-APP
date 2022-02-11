@@ -11,6 +11,7 @@ const biographie = document.getElementById("id_biographie");
 const inputNom = document.querySelector("input#id_nom");
 const ajouter = document.getElementById("btn_ajouter");
 const btnSauvegarder = document.getElementById("idBtnSauvegarder");
+const competence = document.querySelectorAll('[name="competence1"]');
 let tableauElements =  []
 const principal = document.getElementById("princ")
 
@@ -103,6 +104,11 @@ propositionElement = document.getElementById("idCartes")
     const recupPrenom = prenom.value; 
     const recupNiveau = niveau.options[niveau.selectedIndex].value
     const recupBiographie = biographie.value; 
+    const competence1 = competence[0].value
+    const competence2 = competence[1].value
+    const competence3 = competence[2].value
+    const competence4 = competence[3].value
+    const competence5 = competence[4].value
 
     //VERIFICALTION DES CHAMPS S'ILS SONT VIDES APLLIQUE LA COULEUR COUGE
     if(recupNom == ""){
@@ -124,6 +130,7 @@ propositionElement = document.getElementById("idCartes")
       document.getElementById("require_biographie").style.display="block"
       prenom.focus()
     }
+
     else{
       //CREATION DE VARIABLE POUR STOCKER DES ELEMENTS
       const elements ={
@@ -131,8 +138,13 @@ propositionElement = document.getElementById("idCartes")
           prenom : recupPrenom,
           niveau : recupNiveau,
           biographie : recupBiographie,
+          competence1 : competence1,
+          competence2 : competence2,
+          competence3 : competence3,
+          competence4 : competence4,
+          competence5 : competence5,
       }
-      console.log(elements)
+      // console.log(elements)
 
   
         //RAPPELER LA CARTE

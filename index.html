@@ -10,6 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body id="princ">
+  <header>
+  <nav class="mb-5">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    </div>
+  </nav>
+  </header>
     <div class="row">
         <div class="col-6 p-5">
           <form id="form">
@@ -41,16 +47,29 @@
                                    <!----------Decompte de nombre de cacarteres saisie ---------->
                 <p id="text-restant" class="text-end">Nombre de caracteres : <strong id="nbre">0</strong>  /130 </p>
               </div>
-                <a href="listeApprenant.html"><button type="button" class="btn btn-dark justify-content-end" id="voirList">voirList</button></a>
+              <h2 class="competence">Competences</h2>
+              <div class="m-5">
+                Maquetter une application : <br>
+                <input type="number" name="competence1" id="1"> <br>
+                Créer une base de données : <br>
+                <input type="number" name="competence1" id="2"> <br>
+                Développer une interface utilisateur web dynamique : <br>
+                <input type="number" name="competence1" id="3"> <br>
+                Développer des composants d'accès aux données : <br>
+                <input type="number" name="competence1" id="4"> <br>
+                Réaliser une interface utilisateur avec une solution de gestion de contenu : <br>
+                <input type="number" name="competence1" id="5"> <br>
+              </div>
+                <a><button type="button" class="btn btn-dark justify-content-end" id="voirList">voirList</button></a>
                 <button class="btn_ajouter btn btn-danger"  id="btn_ajouter">Ajouter</button>
-                
             </form>
         </div> 
-        <div class="col-6 btn-danger" >
-        <div class="row" id="idCartes">
+        <div class="col shadow">
+        <div class="row danger" id="idCartes">
 
           </div>
                <button type="button" class="btn btn-light" id="idBtnSauvegarder">Sauvegarder</button>
+
         </div>
     </div>
   
